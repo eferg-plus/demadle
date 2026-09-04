@@ -1,0 +1,6 @@
+# 4 image files need to go in this folder.
+
+Clancy.jpg
+Trench.png
+Vessel.png
+my-image (1).png

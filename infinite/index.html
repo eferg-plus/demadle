@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta Data Code -->
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Twenty One Pilots Heardle</title>
+    <meta
+      name="description"
+      content="Guess the TØP song from the intro in as little tries as possible."
+    />
+    <meta itemprop="name" content="TØP Heardle" />
+    <meta
+      itemprop="description"
+      content="Guess the TØP song from the intro in as little tries as possible."
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      href="../images/my-image (1).png"
+    />
+    <meta property="og:url" content="https://top-heardle.glitch.me/infinite" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="TØP Heardle Infinite" />
+    <meta
+      property="og:description"
+      content="Guess the TØP song from the intro in as little tries as possible."
+    />
+    
+    <meta
+      itemprop="image"
+      content="../images/Trench.png"
+    />
+    <meta
+      property="og:image"
+      content="../images/Trench.png"
+    />
+    <meta
+      name="twitter:image"
+      content="../images/Trench.png"
+    />
+
+    <!-- CSS Code -->
+
+    <style type="text/css">
+      body {
+        background-image: url('../images/Trench.png');
+        background-size: cover; /* Adjust as needed */
+        background-position: center center; /* Adjust as needed */
+        background-repeat: no-repeat; /* Adjust as needed */
+        background-attachment: fixed; /* Fixed or scroll, depending on your preference */
+        opacity: 0.85; /* Adjust the opacity value */
+        overflow: hidden;
+        text-align: center;
+        font-family: "Arial", sans-serif;
+        margin: 50px;
+      }
+
+      /* Header styles */
+      header {
+        background-color: #131311;
+        padding: 10px;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1; /* Ensure the header stays above other content */
+      }
+
+      /* Header button styles */
+      .header-btn {
+        background-color: #4b543a;
+        color: #fff;
+        padding: 8px 12px; /* Adjust padding */
+        height: 32px;
+        width: 32px;
+        border: 5px #000000;
+        border-radius: 2px;
+        cursor: pointer;
+        margin: 12px;
+        font-size: 16px; /* Adjust font size */
+        position: relative;
+        display: flex; /* Use flexbox */
+        align-items: center; /* Center vertically */
+        justify-content: center; /* Center horizontally */
+        transition: 0.3s; /* Add a smooth transition effect */
+      }
+
+      .header-btn:hover {
+        background-color: #6f6b33; /* Change color on hover */
+      }
+
+      /* Popup styles */
+      .popup {
+        display: none;
+        position: fixed;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        top: 50%;
+        left: 50%;
+        width: 70%;
+        height: 60%;
+        transform: translate(-50%, -50%);
+        background-color: #131311;
+        padding: 50px;
+        z-index: 2;
+        color: #ffffff;
+      }
+
+      /* Popup button styles */
+      .exitButton {
+        background-color: #957c0e;
+        color: #fff;
+        padding: 8px 16px;
+        height: 32px;
+        width: 32px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+        display: flex; /* Use flexbox */
+        align-items: center; /* Center vertically */
+        justify-content: center; /* Center horizontally */
+      }
+      .playfield {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 60px; /* Adjust top margin if needed */
+      }
+      .guessInput {
+        display: inline-block;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px; /* Adjust top margin if needed */
+      }
+      .guessInput button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 32px;
+        width: 64px;
+        margin-top: 0px;
+        margin-left: 0px;
+        margin-right: 10px;
+        padding: 10px 24px; /* Adjust padding */
+        font-size: 18px; /* Adjust font size */
+        border-radius: 4px;
+        background-color: #131311; /* Change skip button color */
+        color: #fff; /* Text color */
+        border: 2px solid #fff; /* Skip button border color */
+        cursor: pointer;
+        transition: 0.3s, color 0.3s; /* Add smooth transitions */
+      }
+      .guessInput button:hover {
+        background-color: #4b543a; /* Change color on hover */
+        color: #131311; /* Change text color on hover */
+        border: 2px solid #131311;
+      }
+      input {
+        height: 24px;
+        width: 192px;
+        margin-top: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        justify-content: center;
+      }
+
+      /* Play button styles */
+      button[data-content="play"] {
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        margin-top: 40px;
+        margin-left: 10px;
+        margin-right: 10px;
+        padding: 8px; /* Adjust padding */
+        height: 128px;
+        width: 128px;
+        font-size: 20px;
+        border-radius: 50%; /* Make it a circle */
+        background-color: #b9ac28; /* Button color */
+        color: #131311; /* Text color */
+        border: 6px solid #957c0e; /* Progress ring color */
+        cursor: pointer;
+        transition: background-color 0.3s; /* Add a smooth transition effect */
+      }
+
+      /* Default font size for desktop */
+      h1 {
+        font-size: 25px;
+      }
+
+      /* Media query for screens with a maximum width of 768px (typical for mobile devices) */
+      @media only screen and (max-width: 768px) {
+        /* Font size for mobile */
+        h1 {
+          font-size: 20px;
+        }
+      }
+
+      button[data-content="play"]:hover {
+        background-color: #957c0e; /* Change color on hover */
+      }
+
+      .progress-ring {
+        position: absolute;
+        left: -17px;
+        top: -17px;
+      }
+
+      .progress-ring .progress-circle {
+        stroke-dasharray: 800 900; /* Adjust this value to change the appearance of dashes */
+        transition: stroke-dasharray 0.75s; /* Add a smooth transition effect */
+        rotate: -90deg;
+      }
+
+      /* Add a play icon to the button */
+      button[data-content="play"]::before {
+        content: "\25B6"; /* Unicode character for a right-pointing triangle (play icon) */
+        font-size: 48px;
+      }
+      /* Header button styles */
+      .header-btn[data-content="question"]::before {
+        content: "?";
+        font-size: 24px;
+      }
+
+      .header-btn[data-content="heart"]::before {
+        content: "\2665"; /* Unicode character for a heart symbol */
+        font-size: 24px;
+      }
+
+      .header-btn[data-content="squares"]::before {
+        content: "\229E"; /* Unicode character for a boxes symbol */
+        font-size: 24px;
+      }
+
+      .header-btn[data-content="chart"]::before {
+        content: "\A517"; /* Unicode character for a lines symbol */
+        font-size: 24px;
+      }
+
+      .exitButton::before {
+        content: "X";
+        font-size: 24px;
+      }
+
+      #audioPlayer {
+        margin-top: 20px;
+        display: none;
+      }
+
+      .skip-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 15px;
+        width: 120px;
+        height: 30px;
+        padding: 12px 24px; /* Adjust padding */
+        font-size: 18px; /* Adjust font size */
+        border-radius: 4px;
+        background-color: #131311; /* Change skip button color */
+        color: #fff; /* Text color */
+        border: 2px solid #fff; /* Skip button border color */
+        cursor: pointer;
+        transition: 0.3s, color 0.3s; /* Add smooth transitions */
+      }
+
+      .skip-button:hover {
+        background-color: #957c0e; /* Change color on hover */
+        color: #131311; /* Change text color on hover */
+        border: 2px solid #131311;
+      }
+      .custom-datalist {
+        position: absolute;
+        max-height: 100px; /* Adjust the max height as needed */
+        overflow-y: auto;
+        border: 1px solid #ccc;
+        margin-top: 10px; /* Adjust the top margin as needed */
+      }
+      .emptyGuesses {
+        display: block; /* Display rectangles in a row */
+        align-items: center;
+        justify-content: center;
+        margin: 0px;
+      }
+      .emptyGuess {
+        margin-top: 10px;
+        width: 270px; /* Adjust the width as needed */
+        height: 32px; /* Adjust the height as needed */
+        background-color: #333333; /* Set a background color for the rectangle */
+        align-items: center; /* Center vertically */
+        border: 2px solid #fff;
+        font-size: 12px;
+        color: #fff;
+        font-family: "Arial", sans-serif;
+        display: flex;
+        align-items: center; /* Center vertically */
+        justify-content: center; /* Center horizontally */
+      }
+      #creditHeader {
+        position: fixed;
+        bottom: 10px; /* Adjust this value as needed */
+        font-weight: lighter;
+        font-size: 15px;
+        color: #fff;
+        font-family: "Arial", sans-serif;
+      }
+      .guessDistribution {
+        width: 225px;
+        display: inline-block;
+        font-size: 12px;
+        margin-top: 5px;
+        justify-content: start;
+        border: 1px solid #ffffff;
+      }
+      .emptyGuessDistribution {
+        display: flex;
+        align-items: center;
+        padding: 0px 5px;
+      }
+      .guessDLines {
+        background-color: #4b543a;
+        border: 1px solid #ffffff;
+        width: 150px; /* Adjust the width as needed */
+        height: 20px; /* Adjust the height as needed */
+        margin-left: 5px;
+        margin-right: 5px;
+        border-radius: 10px;
+      }
+      #dailyButton {
+        height: 32px;
+        width: 100%;
+        border-radius: 4px;
+        background-color: #333333;
+        color: #fff;
+        border: 2px solid #fff;
+        cursor: pointer;
+        transition: 0.3s, color 0.3s; /* Add smooth transitions */
+      }
+      #dailyButton:hover{
+        background-color: #a5a28f;
+        border: 2px solid #31312f;
+        color: #952723;
+      }
+      #rapidButton {
+        height: 32px;
+        width: 100%;
+        border-radius: 4px;
+        background-color: #3D3A39;
+        color: #F8FEFE;
+        border: 2px solid #F8FEFE;
+        cursor: pointer;
+        transition: 0.3s, color 0.3s; /* Add smooth transitions */
+      }
+      #rapidButton:hover{
+        background-color: #ff4646;
+        border: 2px solid #4fffec;
+        color: #FFFFFF;
+      }
+    </style>
+
+    <!-- JS Code & Other -->
+
+    <script>
+      if (location.protocol != "https:") {
+        location.href =
+          "https:" +
+          window.location.href.substring(window.location.protocol.length);
+      }
+
+      // Function to show/hide popups
+      function togglePopup(popupId) {
+        const popup = document.getElementById(popupId);
+        extrasPopup.style.display = "none";
+        aboutPopup.style.display = "none";
+        contactPopup.style.display = "none";
+        statsPopup.style.display = "none";
+        if (popup.style.display == "none") {
+          popup.style.display = "flex"; //popup.style.display === "none" ? "flex" : "none";
+          console.log(`popup ${popup} ${popup.style.display}`);
+        }
+      }
+      //Button Navigation
+      function navigateTo(path) {
+        // Use JavaScript to navigate to the specified path
+        window.location.href = window.location.origin + path;
+      }
+    </script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <button
+        class="header-btn"
+        onclick="togglePopup('extrasPopup')"
+        data-content="squares"
+      ></button>
+      <button
+        class="header-btn"
+        onclick="togglePopup('aboutPopup')"
+        data-content="question"
+      ></button>
+      <h1>TØP Heardle ֍</h1>
+      <button
+        class="header-btn"
+        onclick="togglePopup('contactPopup')"
+        data-content="heart"
+      ></button>
+      <button
+        class="header-btn"
+        onclick="togglePopup('statsPopup')"
+        data-content="chart"
+      ></button>
+    </header>
+
+    <!-- About Popup -->
+    <div id="aboutPopup" class="popup">
+      <h2>About</h2>
+      <p>
+        This is a game to guess TØP songs from random points in their songs. If
+        you are struggling, feel free to hit 'Skip' to get a bit more time to
+        listen to the song. This is the infinite mode meaning you can reload to keep playing.
+        Have fun!
+      </p>
+      <button onclick="togglePopup()" class="exitButton"></button>
+    </div>
+
+    <!-- Contact Popup -->
+    <div id="contactPopup" class="popup">
+      <h2>Contact</h2>
+      <p>
+        Made by
+        <a href="https://twitter.com/eferg0064" target="_blank">@eferg0064</a
+        ><br />Feel free to reach out to me on twitter with any bugs or
+        suggestions. <br /><br />
+        Time spent on project &gt 36hrs
+      </p>
+      <button onclick="togglePopup()" class="exitButton"></button>
+    </div>
+
+    <!-- Extras Popup -->
+    <div id="extrasPopup" class="popup">
+      <h2>Extras</h2>
+      <p>
+        Try out some of my other stuff:
+        <br />
+        <button onclick="navigateTo('/daily')" id="dailyButton">TØP Heardle Daily</button>
+        <button onclick="navigateTo('/rapid')" id="rapidButton">TØP Heardle Rapid ∿</button>
+      </p>
+      <button onclick="togglePopup()" class="exitButton"></button>
+    </div>
+
+    <!-- Stats Popup -->
+    <div id="statsPopup" class="popup">
+      <h2>Stats</h2>
+      <p id="statsText">
+        Feel free to share this TØP Heardle using <br />
+        <a href="https://dema-heardle.glitch.me/" target="_blank"
+          >dema-heardle.glitch.me</a
+        ><br />
+      </p>
+      <div class="statsGraph">
+        <div class="graphHeader"></div>
+        <div class="guessDistribution">
+          <div id="guessD1" class="emptyGuessDistribution">
+            <p>1</p>
+            <div id="guessD1Line" class="guessDLines"></div>
+            <p id="amountCompleted1"></p>
+          </div>
+          <div id="guessD2" class="emptyGuessDistribution">
+            <p>2</p>
+            <div id="guessD2Line" class="guessDLines"></div>
+            <p id="amountCompleted2"></p>
+          </div>
+          <div id="guessD3" class="emptyGuessDistribution">
+            <p>3</p>
+            <div id="guessD3Line" class="guessDLines"></div>
+            <p id="amountCompleted3"></p>
+          </div>
+          <div id="guessD4" class="emptyGuessDistribution">
+            <p>4</p>
+            <div id="guessD4Line" class="guessDLines"></div>
+            <p id="amountCompleted4"></p>
+          </div>
+          <div id="guessD5" class="emptyGuessDistribution">
+            <p>5</p>
+            <div id="guessD5Line" class="guessDLines"></div>
+            <p id="amountCompleted5"></p>
+          </div>
+          <div id="guessD6" class="emptyGuessDistribution">
+            <p>6</p>
+            <div id="guessD6Line" class="guessDLines"></div>
+            <p id="amountCompleted6"></p>
+          </div>
+          <div id="guessDF" class="emptyGuessDistribution">
+            <p>X</p>
+            <div id="guessDFLine" class="guessDLines"></div>
+            <p id="amountCompletedF"></p>
+          </div>
+        </div>
+      </div>
+      <button onclick="togglePopup()" class="exitButton"></button>
+    </div>
+    <div class="playfield">
+      <!-- Play button -->
+      <button onclick="playRandom()" data-content="play">
+        <div class="progress-ring">
+          <svg class="progress-circle" width="150" height="150">
+            <circle
+              cx="75"
+              cy="75"
+              r="61"
+              fill="none"
+              stroke="#131311"
+              stroke-width="6"
+            ></circle>
+          </svg>
+        </div>
+      </button>
+      <button class="skip-button" data-content="skip" onclick="skipGuess()">
+        <p>Skip</p>
+      </button>
+      <div class="guesses">
+        <!-- Song Input and Search -->
+        <div class="guessInput">
+          <input
+            placeholder="Type your guess..."
+            type="text"
+            id="songInput"
+            oninput="filterSongs()"
+            list="songTitles"
+          />
+          <datalist id="songTitles" class="custom-datalist"></datalist>
+          <button
+            class="submitGuess"
+            data-content="submitGuess"
+            onclick="submitGuess()"
+          >
+            <p>Guess</p>
+          </button>
+        </div>
+
+        <!-- Blank Guesses -->
+        <div class="emptyGuesses">
+          <div class="emptyGuess" id="emptyGuess1">
+            <p id="Guess1"></p>
+          </div>
+          <div class="emptyGuess" id="emptyGuess2">
+            <p id="Guess2"></p>
+          </div>
+          <div class="emptyGuess" id="emptyGuess3">
+            <p id="Guess3"></p>
+          </div>
+          <div class="emptyGuess" id="emptyGuess4">
+            <p id="Guess4"></p>
+          </div>
+          <div class="emptyGuess" id="emptyGuess5">
+            <p id="Guess5"></p>
+          </div>
+          <div class="emptyGuess" id="emptyGuess6">
+            <p id="Guess6"></p>
+          </div>
+        </div>
+      </div>
+      <audio id="audioPlayer" controls>
+        Your browser does not support the audio element.
+      </audio>
+      <h3 id="creditHeader">
+        Made by
+        <a href="https://twitter.com/eferg0064" target="_blank">@eferg0064</a>
+      </h3>
+    </div>
+    <script defer src="infinite/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,108 @@
+# 105 mp3 files need to go in this folder for the game to work.
+# Filenames must match EXACTLY (including spaces, commas, apostrophes).
+
+Twenty One Pilots - At the Risk of Feeling Dumb.mp3
+Twenty One Pilots - Backslide.mp3
+Twenty One Pilots - Car Radio_Heathens - MTV.mp3
+Twenty One Pilots - House of Gold_Lane Boy - MTV.mp3
+Twenty One Pilots - Lavish.mp3
+Twenty One Pilots - Midwest Indigo.mp3
+Twenty One Pilots - Navigating.mp3
+Twenty One Pilots - Next Semester.mp3
+Twenty One Pilots - Oldies Station.mp3
+Twenty One Pilots - Overcompensate.mp3
+Twenty One Pilots - Paladin Strait.mp3
+Twenty One Pilots - Ride_Nico and The Niners - MTV.mp3
+Twenty One Pilots - Routines in the Night.mp3
+Twenty One Pilots - Shy Away - MTV.mp3
+Twenty One Pilots - Snap Back.mp3
+Twenty One Pilots - Stressed Out - MTV.mp3
+Twenty One Pilots - Tear in My Heart - MTV.mp3
+Twenty One Pilots - The Craving (single version).mp3
+Twenty One Pilots - The Line.mp3
+Twenty One Pilots - Vignette.mp3
+audio-ode_to_sleep.mp3
+audio_a_car,_a_torch,_a_death.mp3
+audio_addict_with_a_pen.mp3
+audio_air_catcher.mp3
+audio_anathema.mp3
+audio_bandito.mp3
+audio_before_you_start_your_day.mp3
+audio_bounce_man.mp3
+audio_cancer.mp3
+audio_car_radio.mp3
+audio_chlorine.mp3
+audio_choker.mp3
+audio_choker_stressed_out_migraine_morph_holding_onto_you_-_livestream.mp3
+audio_clear.mp3
+audio_cut_my_lip.mp3
+audio_doubt.mp3
+audio_fairly_local.mp3
+audio_fake_you_out.mp3
+audio_fall_away.mp3
+audio_forest.mp3
+audio_formidable.mp3
+audio_friend,_please.mp3
+audio_glowing_eyes.mp3
+audio_goner.mp3
+audio_good_day.mp3
+audio_guns_for_hands.mp3
+audio_heathens.mp3
+audio_heathens_trees_-_livestream.mp3
+audio_heavydirtysoul.mp3
+audio_holding-on_to_you.mp3
+audio_hometown.mp3
+audio_house_of_gold.mp3
+audio_implicit_demand_for_proof.mp3
+audio_isle_of_flightless_birds.mp3
+audio_johnny_boy.mp3
+audio_jumpsuit.mp3
+audio_jumpsuit_heavydirtysoul_-_livestream.mp3
+audio_kitchen_sink.mp3
+audio_lane_boy.mp3
+audio_lane_boy_redecorate_chlorine_-_livestream.mp3
+audio_leave_the_city.mp3
+audio_legend.mp3
+audio_level_of_concern.mp3
+audio_levitate.mp3
+audio_lovely.mp3
+audio_march_to_the_sea.mp3
+audio_message_man.mp3
+audio_migraine.mp3
+audio_morph.mp3
+audio_mulberry_street.mp3
+audio_mulberry_street_livestream.mp3
+audio_my_blood.mp3
+audio_neon_gravestones.mp3
+audio_never_take_it.mp3
+audio_never_take_it_-_livestream.mp3
+audio_nico_and_the_niners.mp3
+audio_no_chances.mp3
+audio_not_today.mp3
+audio_oh,_ms._believer.mp3
+audio_pet_cheetah.mp3
+audio_polarize.mp3
+audio_redecorate.mp3
+audio_ride.mp3
+audio_ruby.mp3
+audio_saturday.mp3
+audio_saturday_level_of_concern_ride_car_radio_-_livestream.mp3
+audio_screen.mp3
+audio_semi-automatic.mp3
+audio_shy_away.mp3
+audio_shy_away_-_livestream.mp3
+audio_slowtown.mp3
+audio_smithereens.mp3
+audio_stressed_out.mp3
+audio_taxi_cab.mp3
+audio_tear_in_my_heart.mp3
+audio_the_hype.mp3
+audio_the_judge.mp3
+audio_the_outside.mp3
+audio_the_outside_-_livestream.mp3
+audio_the_pantaloon.mp3
+audio_the_run_and_go.mp3
+audio_trapdoor.mp3
+audio_trees.mp3
+audio_truce.mp3
+audio_we_dont_believe_whats_on_tv.mp3
