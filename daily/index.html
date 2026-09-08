@@ -30,22 +30,22 @@
     
     <meta
       itemprop="image"
-      content="../images/Clancy.jpg"
+      content="../images/Breach_Contract.png"
     />
     <meta
       property="og:image"
-      content="../images/Clancy.jpg"
+      content="../images/Breach_Contract.png"
     />
     <meta
       name="twitter:image"
-      content="../images/Clancy.jpg"
+      content="../images/Breach_Contract.png"
     />
 
     <!-- CSS Code -->
 
     <style type="text/css">
       body {
-        background-image: url('../images/Clancy.jpg');
+        background-image: url('../images/Breach_Contract.png');
         background-size: cover; /* Adjust as needed */
         background-position: center center; /* Adjust as needed */
         background-repeat: no-repeat; /* Adjust as needed */
@@ -59,9 +59,9 @@
 
       /* Header styles */
       header {
-        background-color: #3b3a35;
+        background-color: #1d2b3b;
         padding: 10px;
-        color: #a5a28f;
+        color: #dae4ee;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -70,12 +70,13 @@
         left: 0;
         right: 0;
         z-index: 1; /* Ensure the header stays above other content */
+        opacity: 0.75; /* Adjust the opacity value */
       }
 
       /* Header button styles */
       .header-btn {
-        background-color: #e23b35;
-        color: #31312f;
+        background-color: #7b364f;
+        color: #01050b;
         padding: 8px 12px; /* Adjust padding */
         height: 32px;
         width: 32px;
@@ -92,8 +93,8 @@
       }
 
       .header-btn:hover {
-        background-color: #31312f; /* Change color on hover */
-        color: #e23b35;
+        background-color: #01050b; /* Change color on hover */
+        color: #7b364f;
       }
 
       /* Popup styles */
@@ -108,15 +109,15 @@
         width: 70%;
         height: 60%;
         transform: translate(-50%, -50%);
-        background-color: #a5a28f;
+        background-color: #dae4ee;
         padding: 50px;
         z-index: 2;
       }
 
       /* Popup button styles */
       .exitButton {
-        background-color: #fbe41a;
-        color: #31312f;
+        background-color: #7b364f;
+        color: #01050b;
         padding: 8px 16px;
         height: 32px;
         width: 32px;
@@ -154,16 +155,17 @@
         padding: 10px 24px; /* Adjust padding */
         font-size: 18px; /* Adjust font size */
         border-radius: 4px;
-        background-color: #3b3a35; /* Change skip button color */
-        color: #a5a28f; /* Text color */
-        border: 2px solid #a5a28f; /* Skip button border color */
+        background-color: #1d2b3b; /* Change skip button color */
+        color: #dae4ee; /* Text color */
+        border: 2px solid #dae4ee; /* Skip button border color */
         cursor: pointer;
         transition: 0.3s, color 0.3s; /* Add smooth transitions */
+        opacity: 0.75; /* Adjust the opacity value */
       }
       .guessInput button:hover {
-        background-color: #e23b35; /* Change color on hover */
-        color: #31312f; /* Change text color on hover */
-        border: 2px solid #31312f;
+        background-color: #7b364f; /* Change color on hover */
+        color: #01050b; /* Change text color on hover */
+        border: 2px solid #01050b;
       }
       input {
         height: 24px;
@@ -172,9 +174,10 @@
         margin-left: 0px;
         margin-right: 0px;
         justify-content: center;
-        background-color: #3b3a35;
-        border: 2px solid #31312f;
-        color: #a5a28f;
+        background-color: #1d2b3b;
+        border: 2px solid #01050b;
+        color: #dae4ee;
+        opacity: 0.75; /* Adjust the opacity value */
       }
 
       /* Play button styles */
@@ -190,10 +193,11 @@
         width: 128px;
         font-size: 20px;
         border-radius: 50%; /* Make it a circle */
-        background-color: #952723; /* Button color */
-        color: #31312f; /* Text color */
-        border: 6px solid #e23b35; /* Progress ring color */
+        background-color: #a14667; /* Button color */
+        color: #01050b; /* Text color */
+        border: 6px solid #7b364f; /* Progress ring color */
         cursor: pointer;
+        opacity: 0.75; /* Adjust the opacity value */
         transition: 0.3s; /* Add a smooth transition effect */
       }
 
@@ -211,7 +215,7 @@
       }
 
       button[data-content="play"]:hover {
-        background-color: #e23b35; /* Change color on hover */
+        background-color: #7b364f; /* Change color on hover */
       }
 
       .progress-ring {
@@ -272,17 +276,18 @@
         padding: 12px 24px; /* Adjust padding */
         font-size: 18px; /* Adjust font size */
         border-radius: 4px;
-        background-color: #3b3a35; /* Change skip button color */
-        color: #a5a28f; /* Text color */
-        border: 2px solid #a5a28f; /* Skip button border color */
+        background-color: #1d2b3b; /* Change skip button color */
+        color: #dae4ee; /* Text color */
+        border: 2px solid #dae4ee; /* Skip button border color */
         cursor: pointer;
         transition: 0.3s, color 0.3s; /* Add smooth transitions */
+        opacity: 0.75; /* Adjust the opacity value */
       }
 
       .skip-button:hover {
-        background-color: #fbe41a; /* Change color on hover */
-        color: #31312f; /* Change text color on hover */
-        border: 2px solid #31312f;
+        background-color: #7b364f; /* Change color on hover */
+        color: #01050b; /* Change text color on hover */
+        border: 2px solid #01050b;
       }
       .custom-datalist {
         position: absolute;
@@ -301,22 +306,23 @@
         margin-top: 10px;
         width: 270px; /* Adjust the width as needed */
         height: 32px; /* Adjust the height as needed */
-        background-color: #3b3a35; /* Set a background color for the rectangle */
+        background-color: #1d2b3b; /* Set a background color for the rectangle */
         align-items: center; /* Center vertically */
-        border: 2px solid #a5a28f;
+        border: 2px solid #dae4ee;
         font-size: 12px;
-        color: #a5a28f;
+        color: #dae4ee;
         font-family: "Arial", sans-serif;
         display: flex;
         align-items: center; /* Center vertically */
         justify-content: center; /* Center horizontally */
+        opacity: 0.5; /* Adjust the opacity value */
       }
       #creditHeader {
         position: fixed;
         bottom: 10px; /* Adjust this value as needed */
         font-weight: lighter;
         font-size: 15px;
-        color: #a5a28f;
+        color: #dae4ee;
         font-family: "Arial", sans-serif;
       }
       .guessDistribution {
@@ -325,7 +331,7 @@
         font-size: 12px;
         margin-top: 5px;
         justify-content: start;
-        border: 1px solid #3b3a35;
+        border: 1px solid #1d2b3b;
       }
       .emptyGuessDistribution {
         display: flex;
@@ -333,8 +339,8 @@
         padding: 0px 5px;
       }
       .guessDLines {
-        background-color: #e23b35;
-        border: 1px solid #3b3a35;
+        background-color: #7b364f;
+        border: 1px solid #1d2b3b;
         width: 150px; /* Adjust the width as needed */
         height: 20px; /* Adjust the height as needed */
         margin-left: 5px;
@@ -345,31 +351,31 @@
         height: 32px;
         width: 100%;
         border-radius: 4px;
-        background-color: #3b3a35;
-        color: #F8FEFE;
-        border: 2px solid #F8FEFE;
+        background-color: #1d2b3b;
+        color: #fff;
+        border: 2px solid #fff;
         cursor: pointer;
         transition: 0.3s, color 0.3s; /* Add smooth transitions */
       }
       #rapidButton:hover{
-        background-color: #ff4646;
-        border: 2px solid #4fffec;
-        color: #FFFFFF;
+        background-color: #b9ac28;
+        border: 2px solid #4b543a;
+        color: #131311;
       }
       #infiniteButton {
         height: 32px;
         width: 100%;
         border-radius: 4px;
-        background-color: #3b3a35;
-        color: #F8FEFE;
-        border: 2px solid #F8FEFE;
+        background-color: #1d2b3b;
+        color: #fff;
+        border: 2px solid #fff;
         cursor: pointer;
         transition: 0.3s, color 0.3s; /* Add smooth transitions */
       }
       #infiniteButton:hover{
-        background-color: #b9ac28;
-        border: 2px solid #4b543a;
-        color: #131311;
+        background-color: #f18ca1;
+        border: 2px solid #a1d0e2;
+        color: #333;
       }
     </style>
 
@@ -524,7 +530,7 @@
               cy="75"
               r="61"
               fill="none"
-              stroke="#31312f"
+              stroke="#01050b"
               stroke-width="6"
             ></circle>
           </svg>
@@ -583,7 +589,7 @@
         <a href="https://twitter.com/eferg0064" target="_blank">@eferg0064</a>
       </h3>
     </div>
-    <script defer src="daily/script.js"></script>
+    <script defer src="script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
   </body>
 </html>

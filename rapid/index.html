@@ -30,22 +30,22 @@
     
     <meta
       itemprop="image"
-      content="../images/Vessel.png"
+      content="../images/Trench_Billboard.png"
     />
     <meta
       property="og:image"
-      content="../images/Vessel.png"
+      content="../images/Trench_Billboard.png"
     />
     <meta
       name="twitter:image"
-      content="../images/Vessel.png"
+      content="../images/Trench_Billboard.png"
     />
 
     <!-- CSS Code -->
 
     <style type="text/css">
       body {
-        background-image: url('../images/Vessel.png');
+        background-image: url('../images/Trench_Billboard.png');
         background-size: cover; /* Adjust as needed */
         background-position: center center; /* Adjust as needed */
         background-repeat: no-repeat; /* Adjust as needed */
@@ -59,7 +59,7 @@
 
       /* Header styles */
       header {
-        background-color: #333;
+        background-color: #131311;
         padding: 10px;
         color: #fff;
         display: flex;
@@ -74,7 +74,7 @@
 
       /* Header button styles */
       .header-btn {
-        background-color: #ff4646;
+        background-color: #4b543a;
         color: #fff;
         padding: 8px 12px; /* Adjust padding */
         height: 32px;
@@ -92,7 +92,7 @@
       }
 
       .header-btn:hover {
-        background-color: #a24847; /* Change color on hover */
+        background-color: #6f6b33; /* Change color on hover */
       }
 
       /* Popup styles */
@@ -107,14 +107,15 @@
         width: 70%;
         height: 60%;
         transform: translate(-50%, -50%);
-        background-color: #fff;
+        background-color: #131311;
         padding: 50px;
         z-index: 2;
+        color: #ffffff;
       }
 
       /* Popup button styles */
       .exitButton {
-        background-color: #4aa49a;
+        background-color: #957c0e;
         color: #fff;
         padding: 8px 16px;
         height: 32px;
@@ -145,7 +146,6 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        background-color: #454948; /* Change color on hover */
         height: 30px;
         width: 32px;
         margin-top: 0px;
@@ -155,16 +155,16 @@
         padding: 10px 24px; /* Adjust padding */
         font-size: 12px; /* Adjust font size */
         border-radius: 4px;
-        background-color: #333333; /* Change skip button color */
+        background-color: #131311; /* Change skip button color */
         color: #fff; /* Text color */
         border: 2px solid #fff; /* Skip button border color */
         cursor: pointer;
         transition: 0.3s, color 0.3s; /* Add smooth transitions */
       }
       .guessInput button:hover {
-        background-color: #fff; /* Change color on hover */
-        color: #4fffec; /* Change text color on hover */
-        border: 2px solid #4fffec;
+        background-color: #4b543a; /* Change color on hover */
+        color: #131311; /* Change text color on hover */
+        border: 2px solid #131311;
       }
       input {
         height: 24px;
@@ -174,7 +174,7 @@
         margin-left: 0px;
         margin-right: 0px;
         justify-content: center;
-        border: 1px solid #333;
+        border: 1px solid #131311;
         opacity: .85;
         transition: 0.5s, color 0.5s; /* Add smooth transitions */
         
@@ -193,9 +193,9 @@
         width: 128px;
         font-size: 20px;
         border-radius: 50%; /* Make it a circle */
-        background-color: #4fffec; /* Button color */
-        color: #ffffff; /* Text color */
-        border: 6px solid #4aa49a; /* Progress ring color */
+        background-color: #b9ac28; /* Button color */
+        color: #131311; /* Text color */
+        border: 6px solid #957c0e; /* Progress ring color */
         cursor: pointer;
         transition: 0.3s; /* Add a smooth transition effect */
       }
@@ -218,7 +218,7 @@
       }
 
       button[data-content="play"]:hover {
-        background-color: #4aa49a; /* Change color on hover */
+        background-color: #957c0e; /* Change color on hover */
       }
 
       .progress-ring {
@@ -287,7 +287,7 @@
         height: 32px;
         width: 100%;
         border-radius: 4px;
-        background-color: #333333;
+        background-color: #131311;
         color: #fff;
         border: 2px solid #fff;
         cursor: pointer;
@@ -302,7 +302,7 @@
         height: 32px;
         width: 100%;
         border-radius: 4px;
-        background-color: #333333;
+        background-color: #131311;
         color: #fff;
         border: 2px solid #fff;
         cursor: pointer;
@@ -327,16 +327,17 @@
         height: 32px;
         width: 92px;
         border-radius: 4px;
-        background-color: #333333;
+        background-color: #131311;
         color: #fff;
         border: 2px solid #fff;
         cursor: pointer;
         transition: 0.3s, color 0.3s; /* Add smooth transitions */
       }
       .copyButton:hover{
-        background-color: #ff4646;
-        border: 2px solid #333;
+        background-color: #4b543a;
+        border: 2px solid #131311;
         color: #fff;
+      }
     </style>
 
     <!-- JS Code & Other -->
@@ -448,8 +449,8 @@
       <h2>Stats</h2>
       <p id="statsText">
         Feel free to share this TØP Heardle using <br />
-        <a href="https://dema-heardle.glitch.me/" target="_blank"
-          >dema-heardle.glitch.me</a
+        <a href="https://github.com/eferg0064/demadle" target="_blank"
+          >github.com/eferg0064/demadle</a
         ><br />
       </p>
       <p id="bestStreakText">
@@ -460,7 +461,7 @@
       </button>
       <p id="textToCopy">
         TØP Rapid 🔥0
-        https://dema-heardle.glitch.me/rapid
+        https://github.com/eferg0064/demadle/rapid
       </p>
       <div class="statsGraph">
         <div class="graphHeader"></div>
@@ -519,6 +520,6 @@
         <a href="https://twitter.com/eferg0064" target="_blank">@eferg0064</a>
       </h3>
     </div>
-    <script defer src="rapid/script.js"></script>
+    <script defer src="script.js"></script>
   </body>
 </html>
