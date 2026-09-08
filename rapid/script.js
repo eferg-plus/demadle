@@ -304,7 +304,7 @@ function updateStatsInLocalStorage() {
   localStorage.setItem("bestStreak", streak);
   bestStreaktext.innerHTML = `Your best streak: 🔥${bestStreak}`;
   textToCopy.innerHTML = `TØP Rapid 🔥${bestStreak}
-        https://dema-heardle.glitch.me/rapid`;
+        ${window.location.origin}/rapid`;
 }
 
 function loadStatsFromLocalStorage() {
@@ -313,7 +313,7 @@ function loadStatsFromLocalStorage() {
     bestStreak = parseInt(localStorage.getItem("bestStreak"), 10);
     bestStreaktext.innerHTML = `Your best streak: 🔥${bestStreak}`;
     textToCopy.innerHTML = `TØP Rapid 🔥${bestStreak}
-        https://dema-heardle.glitch.me/rapid`;
+        ${window.location.origin}/rapid`;
   }
   updateStatScores()
   console.log(`Best Streak: ${bestStreak}`);
