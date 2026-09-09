@@ -33,129 +33,129 @@ console.log(randomNumberSong);
 console.log(randomNumberIndex);
 
 const songFiles = [
-  "audio/implicit_demand_for_proof.mp3",
-  "audio/fall_away.mp3",
-  "audio/the_pantaloon.mp3",
-  "audio/addict_with_a_pen.mp3",
-  "audio/friend_please.mp3",
-  "audio/march_to_the_sea.mp3",
-  "audio/johnny_boy.mp3",
-  "audio/oh_ms_believer.mp3",
-  "audio/air_catcher.mp3",
-  "audio/trapdoor.mp3",
-  "audio/a_car_a_torch_a_death.mp3",
-  "audio/taxi_cab.mp3",
-  "audio/before_you_start_your_day.mp3",
-  "audio/isle_of_flightless_birds.mp3",
+  "../audio/implicit_demand_for_proof.mp3",
+  "../audio/fall_away.mp3",
+  "../audio/the_pantaloon.mp3",
+  "../audio/addict_with_a_pen.mp3",
+  "../audio/friend_please.mp3",
+  "../audio/march_to_the_sea.mp3",
+  "../audio/johnny_boy.mp3",
+  "../audio/oh_ms_believer.mp3",
+  "../audio/air_catcher.mp3",
+  "../audio/trapdoor.mp3",
+  "../audio/a_car_a_torch_a_death.mp3",
+  "../audio/taxi_cab.mp3",
+  "../audio/before_you_start_your_day.mp3",
+  "../audio/isle_of_flightless_birds.mp3",
   /*
-  "audio/audio_slowtown.mp3",
-  "audio/audio_forest.mp3",
-  "audio/audio_glowing_eyes.mp3",
-  "audio/audio_kitchen_sink.mp3",
-  "audio/audio_anathema.mp3",
-  "audio/audio_lovely.mp3",
-  "audio/audio_ruby.mp3",
-  "audio/audio_be_concerned.m4a",
-  "audio/audio_clear.mp3",
+  "../audio/audio_slowtown.mp3",
+  "../audio/audio_forest.mp3",
+  "../audio/audio_glowing_eyes.mp3",
+  "../audio/audio_kitchen_sink.mp3",
+  "../audio/audio_anathema.mp3",
+  "../audio/audio_lovely.mp3",
+  "../audio/audio_ruby.mp3",
+  "../audio/audio_be_concerned.m4a",
+  "../audio/audio_clear.mp3",
   */
-  "audio/ode_to_sleep.mp3",
-  "audio/holding_on_to_you.mp3",
-  "audio/migraine.mp3",
-  "audio/house_of_gold.mp3",
-  "audio/car_radio.mp3",
-  "audio/semi_automatic.mp3",
-  "audio/screen.mp3",
-  "audio/the_run_and_go.mp3",
-  "audio/fake_you_out.mp3",
-  "audio/guns_for_hands.mp3",
-  "audio/trees.mp3",
-  "audio/truce.mp3",
-  "audio/heavydirtysoul.mp3",
-  "audio/stressed_out.mp3",
-  "audio/ride.mp3",
-  "audio/fairly_local.mp3",
-  "audio/tear_in_my_heart.mp3",
-  "audio/lane_boy.mp3",
-  "audio/the_judge.mp3",
-  "audio/doubt.mp3",
-  "audio/polarize.mp3",
-  "audio/we_dont_believe_whats_on_tv.mp3",
-  "audio/message_man.mp3",
-  "audio/hometown.mp3",
-  "audio/not_today.mp3",
-  "audio/goner.mp3",
-  "audio/heathens.mp3",
-  "audio/cancer.mp3",
-  "audio/jumpsuit.mp3",
-  "audio/levitate.mp3",
-  "audio/morph.mp3",
-  "audio/my_blood.mp3",
-  "audio/chlorine.mp3",
-  "audio/smithereens.mp3",
-  "audio/neon_gravestones.mp3",
-  "audio/the_hype.mp3",
-  "audio/nico_and_the_niners.mp3",
-  "audio/cut_my_lip.mp3",
-  "audio/bandito.mp3",
-  "audio/pet_cheetah.mp3",
-  "audio/legend.mp3",
-  "audio/leave_the_city.mp3",
-  "audio/level_of_concern.mp3",
-  "audio/good_day.mp3",
-  "audio/choker.mp3",
-  "audio/shy_away.mp3",
-  "audio/the_outside.mp3",
-  "audio/saturday.mp3",
-  "audio/never_take_it.mp3",
-  "audio/mulberry_street.mp3",
-  "audio/formidable.mp3",
-  "audio/bounce_man.mp3",
-  "audio/no_chances.mp3",
-  "audio/redecorate.mp3",
-  "audio/stream_choker.mp3",
-  "audio/stream_mulberry_street.mp3",
-  "audio/stream_lane_boy.mp3",
-  "audio/stream_shy_away.mp3",
-  "audio/stream_the_outside.mp3",
-  "audio/stream_heathens.mp3",
-  "audio/stream_jumpsuit.mp3",
-  "audio/stream_saturday.mp3",
-  "audio/stream_never_take_it.mp3",
-  "audio/overcompensate.mp3",
-  "audio/next_semester.mp3",
-  "audio/backslide.mp3",
-  "audio/midwest_indigo.mp3",
-  "audio/routines_in_the_night.mp3",
-  "audio/vignette.mp3",
-  "audio/the_craving_j.mp3",
-  "audio/the_craving_s.mp3",
-  "audio/lavish.mp3",
-  "audio/navigating.mp3",
-  "audio/snap_back.mp3",
-  "audio/oldies_station.mp3",
-  "audio/at_the_risk_of_feeling_dumb.mp3",
-  "audio/paladin_strait.mp3",
-  "audio/mtv_stressed_out.mp3",
-  "audio/mtv_tear_in_my_heart.mp3",
-  "audio/mtv_house_of_gold_lane_boy.mp3",
-  "audio/mtv_shy_away.mp3",
-  "audio/mtv_ride_nico_and_the_niners.mp3",
-  "audio/mtv_car_radio_heathens.mp3",
-  "audio/the_line.mp3",
-  "audio/city_walls.mp3",
-  "audio/rawfear.mp3",
-  "audio/drum_show.mp3",
-  "audio/garbage.mp3",
-  "audio/the_contract.mp3",
-  "audio/downstairs.mp3",
-  "audio/robot_voices.mp3",
-  "audio/center_mass.mp3",
-  "audio/cottonwood.mp3",
-  "audio/one_way.mp3",
-  "audio/days_lie_dormant.mp3",
-  "audio/tally.mp3",
-  "audio/intentions.mp3",
-  "audio/drag_path.mp3",
+  "../audio/ode_to_sleep.mp3",
+  "../audio/holding_on_to_you.mp3",
+  "../audio/migraine.mp3",
+  "../audio/house_of_gold.mp3",
+  "../audio/car_radio.mp3",
+  "../audio/semi_automatic.mp3",
+  "../audio/screen.mp3",
+  "../audio/the_run_and_go.mp3",
+  "../audio/fake_you_out.mp3",
+  "../audio/guns_for_hands.mp3",
+  "../audio/trees.mp3",
+  "../audio/truce.mp3",
+  "../audio/heavydirtysoul.mp3",
+  "../audio/stressed_out.mp3",
+  "../audio/ride.mp3",
+  "../audio/fairly_local.mp3",
+  "../audio/tear_in_my_heart.mp3",
+  "../audio/lane_boy.mp3",
+  "../audio/the_judge.mp3",
+  "../audio/doubt.mp3",
+  "../audio/polarize.mp3",
+  "../audio/we_dont_believe_whats_on_tv.mp3",
+  "../audio/message_man.mp3",
+  "../audio/hometown.mp3",
+  "../audio/not_today.mp3",
+  "../audio/goner.mp3",
+  "../audio/heathens.mp3",
+  "../audio/cancer.mp3",
+  "../audio/jumpsuit.mp3",
+  "../audio/levitate.mp3",
+  "../audio/morph.mp3",
+  "../audio/my_blood.mp3",
+  "../audio/chlorine.mp3",
+  "../audio/smithereens.mp3",
+  "../audio/neon_gravestones.mp3",
+  "../audio/the_hype.mp3",
+  "../audio/nico_and_the_niners.mp3",
+  "../audio/cut_my_lip.mp3",
+  "../audio/bandito.mp3",
+  "../audio/pet_cheetah.mp3",
+  "../audio/legend.mp3",
+  "../audio/leave_the_city.mp3",
+  "../audio/level_of_concern.mp3",
+  "../audio/good_day.mp3",
+  "../audio/choker.mp3",
+  "../audio/shy_away.mp3",
+  "../audio/the_outside.mp3",
+  "../audio/saturday.mp3",
+  "../audio/never_take_it.mp3",
+  "../audio/mulberry_street.mp3",
+  "../audio/formidable.mp3",
+  "../audio/bounce_man.mp3",
+  "../audio/no_chances.mp3",
+  "../audio/redecorate.mp3",
+  "../audio/stream_choker.mp3",
+  "../audio/stream_mulberry_street.mp3",
+  "../audio/stream_lane_boy.mp3",
+  "../audio/stream_shy_away.mp3",
+  "../audio/stream_the_outside.mp3",
+  "../audio/stream_heathens.mp3",
+  "../audio/stream_jumpsuit.mp3",
+  "../audio/stream_saturday.mp3",
+  "../audio/stream_never_take_it.mp3",
+  "../audio/overcompensate.mp3",
+  "../audio/next_semester.mp3",
+  "../audio/backslide.mp3",
+  "../audio/midwest_indigo.mp3",
+  "../audio/routines_in_the_night.mp3",
+  "../audio/vignette.mp3",
+  "../audio/the_craving_j.mp3",
+  "../audio/the_craving_s.mp3",
+  "../audio/lavish.mp3",
+  "../audio/navigating.mp3",
+  "../audio/snap_back.mp3",
+  "../audio/oldies_station.mp3",
+  "../audio/at_the_risk_of_feeling_dumb.mp3",
+  "../audio/paladin_strait.mp3",
+  "../audio/mtv_stressed_out.mp3",
+  "../audio/mtv_tear_in_my_heart.mp3",
+  "../audio/mtv_house_of_gold_lane_boy.mp3",
+  "../audio/mtv_shy_away.mp3",
+  "../audio/mtv_ride_nico_and_the_niners.mp3",
+  "../audio/mtv_car_radio_heathens.mp3",
+  "../audio/the_line.mp3",
+  "../audio/city_walls.mp3",
+  "../audio/rawfear.mp3",
+  "../audio/drum_show.mp3",
+  "../audio/garbage.mp3",
+  "../audio/the_contract.mp3",
+  "../audio/downstairs.mp3",
+  "../audio/robot_voices.mp3",
+  "../audio/center_mass.mp3",
+  "../audio/cottonwood.mp3",
+  "../audio/one_way.mp3",
+  "../audio/days_lie_dormant.mp3",
+  "../audio/tally.mp3",
+  "../audio/intentions.mp3",
+  "../audio/drag_path.mp3",
 ];
 const songTitles = [
   "Implicit Demand For Proof",
@@ -294,6 +294,7 @@ let todaysSong = "";
 let guess = "";
 let guessing = true;
 let songPlaying = false;
+let guessFailed = false; // FIX: track a 6th-guess failure directly instead of reading a CSS color back
 
 // Set the stats
 let gamesCompletedIn1GuessD = 0;
@@ -358,6 +359,7 @@ function playRandom() {
     const selectedFile = songFiles[randomIndex];
     todaysSong = songTitles[randomIndex];
     audioPlayer.src = selectedFile;
+    console.log("playRandom: loading", selectedFile, "for", todaysSong); // FIX: log so you can see the exact path being requested
 
     // Add the event listener for loadedmetadata
     audioPlayer.addEventListener("loadedmetadata", onMetadataLoaded);
@@ -383,6 +385,15 @@ function playRandom() {
   }
   pauseTime();
 }
+
+// FIX: surface audio loading errors instead of failing silently
+audioPlayer.addEventListener("error", () => {
+  console.error(
+    "Audio failed to load:",
+    audioPlayer.src,
+    "-- check the file exists in ../audio/ with this exact name and capitalization."
+  );
+});
 
 //Local Storage Stuff
 
@@ -480,7 +491,9 @@ function onMetadataLoaded() {
   audioPlayer.currentTime = startTime;
 
   // Play the audio
-  audioPlayer.play();
+  audioPlayer.play().catch((err) => {
+    console.error("audioPlayer.play() was blocked:", err); // FIX: surface autoplay-block errors instead of failing silently
+  });
 }
 
 function pauseTime() {
@@ -604,6 +617,7 @@ function submitGuess() {
                 emptyGuess6Element.style.borderColor = "#e23b35";
                 statsText.innerHTML = `You didn't manage to get ${todaysSong} in the alotted 30 seconds using all 6 guesses. All good, feel free to try again!`;
                 gamesFailedD++;
+                guessFailed = true; // FIX: replaces the broken border-color check below
               }
             }
           }
@@ -615,7 +629,9 @@ function submitGuess() {
     );
     if (
       todaysSong == guess ||
-      emptyGuess6Element.style.borderColor == "#e23b35"
+      guessFailed // FIX: was `emptyGuess6Element.style.borderColor == "#e23b35"`, which never matches
+                  // because browsers normalize inline style colors to rgb(...) when read back,
+                  // so that comparison against a hex string always failed silently.
     ) {
       startTime = 0;
       listenTime = 580;
