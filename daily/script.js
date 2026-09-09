@@ -10,12 +10,15 @@ const year = today.getFullYear();
 const month = today.getMonth() + 1; // Months are zero-indexed, so add 1
 const day = today.getDate();
 
+// A unique key for TODAY specifically (year+month+day together).
+// NOTE: the old code only ever compared "day" (1-31) on its own, which meant
+// the 9th of any month looked identical to the 9th of any other month. This
+// composite key fixes that.
+const todaysDateKey = `${year}-${month}-${day}`;
+
 // Create a string representation of today's date
 const todaysSongSeed = year*365.25+(month*30.4375)+day;
 const todaysIndexSeed = 3.141592*todaysSongSeed;
-
-console.log(todaysSongSeed);
-console.log(todaysIndexSeed);
 
 // Set the seed value
 const seedSongValue = `${todaysSongSeed}`;
@@ -29,11 +32,8 @@ const rngIndex = new Math.seedrandom(seedIndexValue);
 const randomNumberSong = rngSong();
 const randomNumberIndex = rngIndex();
 
-console.log(randomNumberSong);
-console.log(randomNumberIndex);
-
 const songFiles = [
-  "../audio/implicit_demand_for_proof.mp3",
+  "../audio/implicit_demand_for_prrof.mp3",
   "../audio/fall_away.mp3",
   "../audio/the_pantaloon.mp3",
   "../audio/addict_with_a_pen.mp3",
@@ -73,7 +73,7 @@ const songFiles = [
   "../audio/heavydirtysoul.mp3",
   "../audio/stressed_out.mp3",
   "../audio/ride.mp3",
-  "../audio/fairly_local.mp3",
+  "../audio/failry_local.mp3",
   "../audio/tear_in_my_heart.mp3",
   "../audio/lane_boy.mp3",
   "../audio/the_judge.mp3",
@@ -263,7 +263,7 @@ const songTitles = [
   "Stressed Out - MTV Unplugged",
   "Tear in My Heart - MTV Unplugged",
   "House of Gold / Lane Boy - MTV Unplugged",
-  "Shy Away = MTV Unplugged",
+  "Shy Away - MTV Unplugged",
   "Ride / Nico And The Niners - MTV Unplugged",
   "Car Radio / Heathens - MTV Unplugged",
   "The Line",
@@ -284,17 +284,24 @@ const songTitles = [
 
   // Add More Song Titles
 ];
+
+// Today's song is fully determined by the date seed above, so we can compute
+// it once, right now, instead of waiting until the play button is first
+// pressed. This lets us restore/redraw an already-finished game on page load
+// without needing to press play first.
+const todaysIndex = Math.floor(randomNumberSong * songFiles.length);
+const todaysSong = songTitles[todaysIndex];
+
 let buttonPressed = false;
 // Initialize variables outside the function
 let startTime = 0;
 let listenTime = 1;
 let guessNumber = 1;
 let maxGuesses = 6;
-let todaysSong = "";
 let guess = "";
 let guessing = true;
 let songPlaying = false;
-let guessFailed = false; // FIX: track a 6th-guess failure directly instead of reading a CSS color back
+let guessFailed = false;
 
 // Set the stats
 let gamesCompletedIn1GuessD = 0;
@@ -306,9 +313,11 @@ let gamesCompletedIn6GuessesD = 0;
 let gamesFailedD = 0;
 let totalCompletedGames = 1;
 
-let lastDay = 0;
-let guess1Text = "";
-let retrievedGuess = "";
+// All of today's guesses so far, in order. Persisted to localStorage after
+// every guess (not just at the end) so a mid-game refresh doesn't lose
+// progress either.
+let todaysGuesses = [];
+
 // Set the total duration for the progress ring (30 seconds)
 let totalDuration = 30;
 const guess1Element = document.getElementById("Guess1");
@@ -339,6 +348,19 @@ const amountCompleted6 = document.getElementById("amountCompleted6");
 const amountCompletedF = document.getElementById("amountCompletedF");
 const statsText = document.getElementById("statsText");
 const statsPopup = document.getElementById("statsPopup");
+const shareButton = document.getElementById("shareButton");
+
+const guessElements = [
+  guess1Element, guess2Element, guess3Element,
+  guess4Element, guess5Element, guess6Element,
+];
+const emptyGuessElements = [
+  emptyGuess1Element, emptyGuess2Element, emptyGuess3Element,
+  emptyGuess4Element, emptyGuess5Element, emptyGuess6Element,
+];
+
+const CORRECT_COLOR = "#1d2b3b";
+const WRONG_COLOR = "#7b364f";
 
 audioPlayer.addEventListener("timeupdate", pauseTime);
 
@@ -354,12 +376,10 @@ function playRandom() {
   audioPlayer.removeEventListener("loadedmetadata", onMetadataLoaded);
 
   if (!buttonPressed) {
-    // Set the source of the audio element to a random MP3 file
-    const randomIndex = Math.floor(randomNumberSong * songFiles.length);
-    const selectedFile = songFiles[randomIndex];
-    todaysSong = songTitles[randomIndex];
+    // Set the source of the audio element to today's song
+    const selectedFile = songFiles[todaysIndex];
     audioPlayer.src = selectedFile;
-    console.log("playRandom: loading", selectedFile, "for", todaysSong); // FIX: log so you can see the exact path being requested
+    console.log("playRandom: loading", selectedFile, "for", todaysSong);
 
     // Add the event listener for loadedmetadata
     audioPlayer.addEventListener("loadedmetadata", onMetadataLoaded);
@@ -386,7 +406,7 @@ function playRandom() {
   pauseTime();
 }
 
-// FIX: surface audio loading errors instead of failing silently
+// Surface audio loading errors instead of failing silently
 audioPlayer.addEventListener("error", () => {
   console.error(
     "Audio failed to load:",
@@ -408,32 +428,7 @@ function updateStatsInLocalStorage() {
   localStorage.setItem("gamesFailedD", gamesFailedD);
   updateStatLines()
 }
-function updateDailyInLocalStorage() {
-  console.log(`localStorage Opened`)
-  if (localStorage.getItem("lastDay") !== null) {
-    lastDay = localStorage.getItem("lastDay");
-    console.log(`localStorage Got ${lastDay}`)
-  }
-  if (lastDay !== day) {
-    guessing = true;
-    localStorage.setItem("guessing", guessing);
-  } else {
-      if (localStorage.getItem("guess1Text") !== null) {
-        guess1Text = retriveSavedText("guess1Text");
-        console.log(`localStorage Got text ${guess1Text}`);
-        guess1Element.innerHTML = guess1Text;
-      } else {
-        console.log(`guess1Text returned ${guess1Text}`);
-      }
-    }
-  console.log(`function ran ${guess1Text}`);
-}
-function saveTextLoacally(variable, value) {
-  localStorage.setItem("guess1Text", value);
-}
-function retriveSavedText(variable){
-  return localStorage.getItem(variable);
-}
+
 function loadStatsFromLocalStorage() {
   // Load stats from local storage
   if (localStorage.getItem("gamesCompletedIn1GuessD") !== null) {
@@ -458,7 +453,6 @@ function loadStatsFromLocalStorage() {
     gamesFailedD = parseInt(localStorage.getItem("gamesFailedD"), 10);
   }
   updateStatLines()
-  console.log(`1 Guess Games: ${gamesCompletedIn1GuessD}, Total Games ${totalCompletedGames}`)
 }
 function updateStatLines() {
   totalCompletedGames = gamesCompletedIn1GuessD + gamesCompletedIn2GuessesD + gamesCompletedIn3GuessesD + gamesCompletedIn4GuessesD + gamesCompletedIn5GuessesD + gamesCompletedIn6GuessesD + gamesFailedD;
@@ -478,6 +472,114 @@ function updateStatLines() {
   amountCompletedF.innerHTML = gamesFailedD;
 }
 
+// ---------------------------------------------------------------------------
+// Daily game state (the actual rebuild): saved as ONE JSON object under
+// "dailyGameState", keyed to today's date (year+month+day together, so the
+// 9th of one month is never confused with the 9th of another). This is what
+// makes "you already played today" survive refreshes/new tabs and stops the
+// game from silently resetting.
+// ---------------------------------------------------------------------------
+
+function saveDailyState(finished, result) {
+  const state = {
+    dateKey: todaysDateKey,
+    guesses: todaysGuesses,
+    guessNumber: guessNumber,
+    finished: finished,
+    result: result || null, // "win" or "lose"
+    listenTime: listenTime,
+    statsMessage: statsText.innerHTML,
+  };
+  localStorage.setItem("dailyGameState", JSON.stringify(state));
+}
+
+function loadDailyState() {
+  const raw = localStorage.getItem("dailyGameState");
+  if (!raw) return null;
+  try {
+    return JSON.parse(raw);
+  } catch (e) {
+    console.error("Couldn't parse saved daily state, ignoring it:", e);
+    return null;
+  }
+}
+
+// Redraws the guess boxes (text + correct/incorrect coloring) from a list of
+// past guesses, without re-running any of the scoring/stat-counting logic.
+// Used both to restore an in-progress or finished game on page load.
+function renderGuessHistory(guesses, result) {
+  guesses.forEach((g, i) => {
+    if (!guessElements[i]) return;
+    guessElements[i].innerHTML = g;
+    const isWinningGuess = result === "win" && i === guesses.length - 1;
+    emptyGuessElements[i].style.borderColor = isWinningGuess ? CORRECT_COLOR : WRONG_COLOR;
+  });
+}
+
+// Called once on page load. If today's game was already started or finished,
+// restore it exactly instead of letting the player start over.
+function restoreDailyStateIfAny() {
+  const state = loadDailyState();
+  if (!state || state.dateKey !== todaysDateKey) {
+    // Either no saved game, or it's from a previous day -- nothing to
+    // restore, today's puzzle starts fresh (all the defaults already set
+    // above are correct as-is).
+    return;
+  }
+
+  todaysGuesses = state.guesses || [];
+  guessNumber = state.guessNumber || 1;
+  listenTime = state.listenTime || 1;
+
+  renderGuessHistory(todaysGuesses, state.result);
+
+  if (state.finished) {
+    guessing = false;
+    startTime = 0;
+    listenTime = 580;
+    totalDuration = 1.25;
+    statsText.innerHTML = state.statsMessage;
+    shareButton.style.display = "flex";
+    statsPopup.style.display = "flex";
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Share button
+// ---------------------------------------------------------------------------
+
+function buildShareText(result, guessCount) {
+  const dateLabel = `${String(month).padStart(2, "0")}/${String(day).padStart(2, "0")}/${String(year).slice(-2)}`;
+  const guessLabel = result === "win" ? `${guessCount}/6` : "X/6";
+  const shareUrl = `${window.location.origin}/demadle/daily`;
+  return `TØP Daily ${dateLabel}\n${guessLabel} Guesses\n${shareUrl}`;
+}
+
+function shareResults() {
+  const state = loadDailyState();
+  if (!state || !state.finished) {
+    return;
+  }
+  const shareText = buildShareText(state.result, state.guesses.length);
+
+  const originalHTML = shareButton.innerHTML;
+  function showCopiedFeedback() {
+    shareButton.innerHTML = "<p>Copied!</p>";
+    setTimeout(() => {
+      shareButton.innerHTML = originalHTML;
+    }, 1500);
+  }
+
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(shareText).then(showCopiedFeedback).catch((err) => {
+      console.error("Clipboard copy failed:", err);
+      window.prompt("Copy this manually:", shareText);
+    });
+  } else {
+    // Clipboard API unavailable (very old browser, or non-HTTPS context)
+    window.prompt("Copy this manually:", shareText);
+  }
+}
 
 // Event listener for loadedmetadata
 function onMetadataLoaded() {
@@ -492,18 +594,13 @@ function onMetadataLoaded() {
 
   // Play the audio
   audioPlayer.play().catch((err) => {
-    console.error("audioPlayer.play() was blocked:", err); // FIX: surface autoplay-block errors instead of failing silently
+    console.error("audioPlayer.play() was blocked:", err);
   });
 }
 
 function pauseTime() {
   if (audioPlayer.currentTime >= startTime + listenTime) {
-    console.log(`pauseTime: Pausing audio. Over ${listenTime} seconds`);
     audioPlayer.pause();
-  } else {
-    console.log(
-      `pauseTime: Not pausing audio ${startTime} ${audioPlayer.currentTime} ${listenTime}`
-    );
   }
 }
 
@@ -514,7 +611,6 @@ function updateProgress() {
   const currentTime = audioPlayer.currentTime - startTime;
   const progressPercentage = (currentTime / totalDuration) * 100;
   const dashArray = `${progressPercentage * 3.85} ${900 + progressPercentage}`;
-  console.log(`updateProgress: Fired, ${dashArray} ${progressCircle}`);
   // Check if the progressCircle element is present
   if (progressCircle) {
     progressCircle.style.strokeDasharray = dashArray;
@@ -539,112 +635,113 @@ function filterSongs() {
   }
 }
 function skipGuess() {
-  if (guessNumber < 7 && buttonPressed == true) {
+  if (guessNumber < 7 && buttonPressed == true && guessing == true) {
     guess = "Skip";
-    console.log(`Skip Recieved`);
     submitGuess();
   }
 }
 function submitGuess() {
-  localStorage.setItem("lastDay", day);
+  if (!guessing) return; // already finished today -- do nothing
+
   if (guess !== "Skip") {
     guess = document.getElementById("songInput").value;
   }
   if (guessNumber < 7 && buttonPressed == true && guessing == true) {
     guessNumber = guessNumber + 1;
+    todaysGuesses.push(guess);
+
     if (guessNumber == 2) {
       guess1Element.innerHTML = guess;
       if (todaysSong == guess) {
-        emptyGuess1Element.style.borderColor = "#fbe41a";
+        emptyGuess1Element.style.borderColor = CORRECT_COLOR;
         statsText.innerHTML = `You correcty guessed ${todaysSong} in ${listenTime} second using only 1 guess. Perfection!`;
         gamesCompletedIn1GuessD++;
       } else {
         listenTime = 3;
-        emptyGuess1Element.style.borderColor = "#e23b35";
-        saveTextLoacally("guess1Text", guess);
+        emptyGuess1Element.style.borderColor = WRONG_COLOR;
       }
     } else {
       if (guessNumber == 3) {
         guess2Element.innerHTML = guess;
         if (todaysSong == guess) {
-          emptyGuess2Element.style.borderColor = "#fbe41a";
+          emptyGuess2Element.style.borderColor = CORRECT_COLOR;
           statsText.innerHTML = `You correcty guessed ${todaysSong} in ${listenTime} seconds using only 2 guesses. Great Job!`;
           gamesCompletedIn2GuessesD++;
         } else {
           listenTime = 5;
-          emptyGuess2Element.style.borderColor = "#e23b35";
+          emptyGuess2Element.style.borderColor = WRONG_COLOR;
         }
       } else {
         if (guessNumber == 4) {
           guess3Element.innerHTML = guess;
           if (todaysSong == guess) {
-            emptyGuess3Element.style.borderColor = "#fbe41a";
+            emptyGuess3Element.style.borderColor = CORRECT_COLOR;
             statsText.innerHTML = `You correcty guessed ${todaysSong} in ${listenTime} second using 3 guesses. Respectable!`;
             gamesCompletedIn3GuessesD++;
           } else {
             listenTime = 10;
-            emptyGuess3Element.style.borderColor = "#e23b35";
+            emptyGuess3Element.style.borderColor = WRONG_COLOR;
           }
         } else {
           if (guessNumber == 5) {
             guess4Element.innerHTML = guess;
             if (todaysSong == guess) {
-              emptyGuess4Element.style.borderColor = "#fbe41a";
+              emptyGuess4Element.style.borderColor = CORRECT_COLOR;
               statsText.innerHTML = `You correcty guessed ${todaysSong} in ${listenTime} seconds using 4 guesses. Not too shabby.`;
               gamesCompletedIn4GuessesD++;
             } else {
               listenTime = 20;
-              emptyGuess4Element.style.borderColor = "#e23b35";
+              emptyGuess4Element.style.borderColor = WRONG_COLOR;
             }
           } else {
             if (guessNumber == 6) {
               guess5Element.innerHTML = guess;
               if (todaysSong == guess) {
-                emptyGuess5Element.style.borderColor = "#fbe41a";
+                emptyGuess5Element.style.borderColor = CORRECT_COLOR;
                 statsText.innerHTML = `You correcty guessed ${todaysSong} in ${listenTime} second using 5 guesses. Getting a little nervous there!`;
                 gamesCompletedIn5GuessesD++;
               } else {
                 listenTime = 30;
-                emptyGuess5Element.style.borderColor = "#e23b35";
+                emptyGuess5Element.style.borderColor = WRONG_COLOR;
               }
             } else {
               if (todaysSong == guess) {
                 guess6Element.innerHTML = guess;
-                emptyGuess6Element.style.borderColor = "#fbe41a";
+                emptyGuess6Element.style.borderColor = CORRECT_COLOR;
                 statsText.innerHTML = `You managed to survive ${todaysSong} in ${listenTime} second using all 6 guesses. Whew, close call!`;
                 gamesCompletedIn6GuessesD++;
               } else {
-                emptyGuess6Element.style.borderColor = "#e23b35";
+                guess6Element.innerHTML = guess;
+                emptyGuess6Element.style.borderColor = WRONG_COLOR;
                 statsText.innerHTML = `You didn't manage to get ${todaysSong} in the alotted 30 seconds using all 6 guesses. All good, feel free to try again!`;
                 gamesFailedD++;
-                guessFailed = true; // FIX: replaces the broken border-color check below
+                guessFailed = true;
               }
             }
           }
         }
       }
     }
-    console.log(
-      `listen time = ${listenTime} guess number = ${guessNumber} todays song was ${todaysSong} you guessed ${guess}.`
-    );
-    if (
-      todaysSong == guess ||
-      guessFailed // FIX: was `emptyGuess6Element.style.borderColor == "#e23b35"`, which never matches
-                  // because browsers normalize inline style colors to rgb(...) when read back,
-                  // so that comparison against a hex string always failed silently.
-    ) {
+
+    if (todaysSong == guess || guessFailed) {
+      const result = todaysSong == guess ? "win" : "lose";
       startTime = 0;
       listenTime = 580;
       totalDuration = 1.25;
       guessing = false;
       playRandom();
       statsPopup.style.display = "flex";
+      shareButton.style.display = "flex";
+      saveDailyState(true, result);
+    } else {
+      // still going -- save progress so a mid-game refresh doesn't lose it
+      saveDailyState(false, null);
     }
   }
   document.getElementById("songInput").value = "";
   guess = "";
   updateStatsInLocalStorage();
-  console.log(`1 Guess Games: ${gamesCompletedIn1GuessD}`);
 }
+
 loadStatsFromLocalStorage();
-updateDailyInLocalStorage();
+restoreDailyStateIfAny();

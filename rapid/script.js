@@ -219,7 +219,7 @@ const songTitles = [
   "Stressed Out - MTV Unplugged",
   "Tear in My Heart - MTV Unplugged",
   "House of Gold / Lane Boy - MTV Unplugged",
-  "Shy Away = MTV Unplugged",
+  "Shy Away - MTV Unplugged",
   "Ride / Nico And The Niners - MTV Unplugged",
   "Car Radio / Heathens - MTV Unplugged",
   "The Line",
@@ -304,7 +304,7 @@ function updateStatsInLocalStorage() {
   localStorage.setItem("bestStreak", streak);
   bestStreaktext.innerHTML = `Your best streak: 🔥${bestStreak}`;
   textToCopy.innerHTML = `TØP Rapid 🔥${bestStreak}
-        ${window.location.origin}/rapid`;
+        ${window.location.origin}/demadle/rapid`;
 }
 
 function loadStatsFromLocalStorage() {
@@ -313,7 +313,7 @@ function loadStatsFromLocalStorage() {
     bestStreak = parseInt(localStorage.getItem("bestStreak"), 10);
     bestStreaktext.innerHTML = `Your best streak: 🔥${bestStreak}`;
     textToCopy.innerHTML = `TØP Rapid 🔥${bestStreak}
-        ${window.location.origin}/rapid`;
+        ${window.location.origin}/demadle/rapid`;
   }
   updateStatScores()
   console.log(`Best Streak: ${bestStreak}`);
@@ -401,7 +401,7 @@ function submitGuess() {
       if (currentSong == guess) {
         streak = streak+1;
         streakScore.innerHTML = streak;
-        input.style.border = "3px solid #4fffec";
+        input.style.border = "3px solid #4b543a";
         resetInput();
         if (streak >= bestStreak) {
           console.log(`streak Updated`)
@@ -411,7 +411,7 @@ function submitGuess() {
         nextSongNeeded=true;
         playRandom();
       } else {
-        input.style.border = "3px solid #ff4646";
+        input.style.border = "3px solid #b9ac28";
         resetInput();
       }
   }

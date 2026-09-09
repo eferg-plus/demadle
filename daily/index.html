@@ -20,7 +20,7 @@
       type="image/png"
       href="../images/Breach_Contract2.png"
     />
-    <meta property="og:url" content="https://eferg_plus.github.io/demadle/daily" />
+    <meta property="og:url" content="https://eferg-plus.github.io/demadle/daily" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="TØP Heardle" />
     <meta
@@ -377,6 +377,13 @@
         border: 2px solid #a1d0e2;
         color: #333;
       }
+      #shareButton {
+        margin-top: 10px;
+        margin-bottom: 10px;
+      }
+      #shareButton p {
+        margin: 0;
+      }
     </style>
 
     <!-- JS Code & Other -->
@@ -474,10 +481,13 @@
       <h2>Stats</h2>
       <p id="statsText">
         Feel free to share this TØP Heardle using <br />
-        <a href="https://eferg_plus.github.io/demadle/daily" target="_blank"
-          >eferg_plus.github.io/demadle/daily</a
+        <a href="https://eferg-plus.github.io/demadle/daily" target="_blank"
+          >eferg-plus.github.io/demadle/daily</a
         ><br />
       </p>
+      <button onclick="shareResults()" class="skip-button" id="shareButton" style="display: none;">
+        <p>Share</p>
+      </button>
       <div class="statsGraph">
         <div class="graphHeader"></div>
         <div class="guessDistribution">

@@ -219,7 +219,7 @@ const songTitles = [
   "Stressed Out - MTV Unplugged",
   "Tear in My Heart - MTV Unplugged",
   "House of Gold / Lane Boy - MTV Unplugged",
-  "Shy Away = MTV Unplugged",
+  "Shy Away - MTV Unplugged",
   "Ride / Nico And The Niners - MTV Unplugged",
   "Car Radio / Heathens - MTV Unplugged",
   "The Line",
@@ -452,65 +452,65 @@ function submitGuess() {
     if (guessNumber == 2) {
       guess1Element.innerHTML = guess;
       if (todaysSong == guess) {
-        emptyGuess1Element.style.borderColor = "#4b543a";
+        emptyGuess1Element.style.borderColor = "#f18ca1";
         statsText.innerHTML = `You correcty guessed ${todaysSong} in ${listenTime} second using only 1 guess. Perfection!`;
         gamesCompletedIn1Guess++;
       } else {
         listenTime = 3;
-        emptyGuess1Element.style.borderColor = "#957c0e";
+        emptyGuess1Element.style.borderColor = "#a1d0e2";
       }
     } else {
       if (guessNumber == 3) {
         guess2Element.innerHTML = guess;
         if (todaysSong == guess) {
-          emptyGuess2Element.style.borderColor = "#4b543a";
+          emptyGuess2Element.style.borderColor = "#f18ca1";
           statsText.innerHTML = `You correcty guessed ${todaysSong} in ${listenTime} seconds using only 2 guesses. Great Job!`;
           gamesCompletedIn2Guesses++;
         } else {
           listenTime = 5;
-          emptyGuess2Element.style.borderColor = "#957c0e";
+          emptyGuess2Element.style.borderColor = "#a1d0e2";
         }
       } else {
         if (guessNumber == 4) {
           guess3Element.innerHTML = guess;
           if (todaysSong == guess) {
-            emptyGuess3Element.style.borderColor = "#4b543a";
+            emptyGuess3Element.style.borderColor = "#f18ca1";
             statsText.innerHTML = `You correcty guessed ${todaysSong} in ${listenTime} second using 3 guesses. Respectable!`;
             gamesCompletedIn3Guesses++;
           } else {
             listenTime = 10;
-            emptyGuess3Element.style.borderColor = "#957c0e";
+            emptyGuess3Element.style.borderColor = "#a1d0e2";
           }
         } else {
           if (guessNumber == 5) {
             guess4Element.innerHTML = guess;
             if (todaysSong == guess) {
-              emptyGuess4Element.style.borderColor = "#4b543a";
+              emptyGuess4Element.style.borderColor = "#f18ca1";
               statsText.innerHTML = `You correcty guessed ${todaysSong} in ${listenTime} seconds using 4 guesses. Not too shabby.`;
               gamesCompletedIn4Guesses++;
             } else {
               listenTime = 20;
-              emptyGuess4Element.style.borderColor = "#957c0e";
+              emptyGuess4Element.style.borderColor = "#a1d0e2";
             }
           } else {
             if (guessNumber == 6) {
               guess5Element.innerHTML = guess;
               if (todaysSong == guess) {
-                emptyGuess5Element.style.borderColor = "#4b543a";
+                emptyGuess5Element.style.borderColor = "#f18ca1";
                 statsText.innerHTML = `You correcty guessed ${todaysSong} in ${listenTime} second using 5 guesses. Getting a little nervous there!`;
                 gamesCompletedIn5Guesses++;
               } else {
                 listenTime = 30;
-                emptyGuess5Element.style.borderColor = "#957c0e";
+                emptyGuess5Element.style.borderColor = "#a1d0e2";
               }
             } else {
               if (todaysSong == guess) {
                 guess6Element.innerHTML = guess;
-                emptyGuess6Element.style.borderColor = "#4b543a";
+                emptyGuess6Element.style.borderColor = "#f18ca1";
                 statsText.innerHTML = `You managed to survive ${todaysSong} in ${listenTime} second using all 6 guesses. Whew, close call!`;
                 gamesCompletedIn6Guesses++;
               } else {
-                emptyGuess6Element.style.borderColor = "#957c0e";
+                emptyGuess6Element.style.borderColor = "#a1d0e2";
                 statsText.innerHTML = `You didn't manage to get ${todaysSong} in the alotted 30 seconds using all 6 guesses. All good, feel free to try again!`;
                 gamesFailed++;
               }
@@ -524,7 +524,7 @@ function submitGuess() {
     );
     if (
       todaysSong == guess ||
-      emptyGuess6Element.style.borderColor == "#957c0e"
+      emptyGuess6Element.style.borderColor == "#a1d0e2"
     ) {
       startTime = 0;
       listenTime = 580;
