@@ -3,7 +3,7 @@ var twitter = "@eferg0064";
 var startDate = "";
 const audioPlayer = document.getElementById("audioPlayer");
 const songFiles = [
-  "../audio/implicit_demand_for_proof.mp3",
+  "../audio/implicit_demand_for_prrof.mp3",
   "../audio/fall_away.mp3",
   "../audio/the_pantaloon.mp3",
   "../audio/addict_with_a_pen.mp3",
@@ -17,7 +17,7 @@ const songFiles = [
   "../audio/taxi_cab.mp3",
   "../audio/before_you_start_your_day.mp3",
   "../audio/isle_of_flightless_birds.mp3",
-    /*
+  /*
   "../audio/audio_slowtown.mp3",
   "../audio/audio_forest.mp3",
   "../audio/audio_glowing_eyes.mp3",
@@ -43,7 +43,7 @@ const songFiles = [
   "../audio/heavydirtysoul.mp3",
   "../audio/stressed_out.mp3",
   "../audio/ride.mp3",
-  "../audio/fairly_local.mp3",
+  "../audio/failry_local.mp3",
   "../audio/tear_in_my_heart.mp3",
   "../audio/lane_boy.mp3",
   "../audio/the_judge.mp3",
@@ -112,6 +112,20 @@ const songFiles = [
   "../audio/mtv_ride_nico_and_the_niners.mp3",
   "../audio/mtv_car_radio_heathens.mp3",
   "../audio/the_line.mp3",
+  "../audio/city_walls.mp3",
+  "../audio/rawfear.mp3",
+  "../audio/drum_show.mp3",
+  "../audio/garbage.mp3",
+  "../audio/the_contract.mp3",
+  "../audio/downstairs.mp3",
+  "../audio/robot_voices.mp3",
+  "../audio/center_mass.mp3",
+  "../audio/cottonwood.mp3",
+  "../audio/one_way.mp3",
+  "../audio/days_lie_dormant.mp3",
+  "../audio/tally.mp3",
+  "../audio/intentions.mp3",
+  "../audio/drag_path.mp3",
 ];
 const songTitles = [
   "Implicit Demand For Proof",
@@ -223,6 +237,22 @@ const songTitles = [
   "Ride / Nico And The Niners - MTV Unplugged",
   "Car Radio / Heathens - MTV Unplugged",
   "The Line",
+  "City Walls",
+  "RAWFEAR",
+  "Drum Show",
+  "Garbage",
+  "The Contract",
+  "Downstairs",
+  "Robot Voices",
+  "Center Mass",
+  "CottonWood",
+  "One Way",
+  "Days Lie Dormant",
+  "Tally",
+  "Intentions",
+  "Drag Path",
+
+  // Add More Song Titles
 ];
 let buttonPressed = false;
 // Initialize variables outside the function
